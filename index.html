@@ -88,14 +88,17 @@
           #modal article {
             max-width: 900px;
             margin: auto;
+            background-color: orange;
+            gap: 10px;
+            position: fixed;
+            top: 0%;
+            left: 0%;
           }
 
           #modal {
             position: sticky;
             display: none;
-            /* position: absolute; */
-            top: 0%;
-            left: 0%;
+
             max-width: 100%;
             max-width: 100%;
             background-color: orange;
@@ -117,10 +120,17 @@
               display: grid;
               grid-template-columns: repeat(auto-fill, minmax(600px, 1fr * 3));
             }
-            #modal {
-              position: absolute;
-              top: 0%;
-              left: 0%;
+            #modal img {
+              max-width: 100%;
+              max-height: 100%;
+            }
+
+            #modal article {
+              top: 20%;
+              left: 20%;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              overflow: auto;
             }
             header {
               padding: 100px;
@@ -153,12 +163,19 @@
             </nav>
           </header>
           <aside id="modal">
-            <h2></h2>
-            <img src="" alt="" />
-            <p class="kategori"></p>
-            <p class="oprindelsesregion"></p>
-            <p class="langbeskrivelse"></p>
-            <p class="pris"></p>
+            <article>
+              <div>
+                <img src="" alt="" />
+              </div>
+              <div>
+                <h2></h2>
+
+                <p class="kategori"></p>
+                <p class="oprindelsesregion"></p>
+                <p class="langbeskrivelse"></p>
+                <p class="pris"></p>
+              </div>
+            </article>
           </aside>
 
           <section></section>
