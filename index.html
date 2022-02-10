@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!DOCTYPE html>
@@ -16,7 +20,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Document</title>
+        <title>Bistro Babushka</title>
       </head>
       <body>
         <style>
@@ -25,106 +29,207 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1rem;
           }
+          nav {
+            display: grid;
+            grid-template-columns: 0.5fr 0.5fr;
+            justify-content: center;
+          }
+          button {
+            margin: 5px;
+            font-family: "Kelly Slab", cursive;
+            color: orange;
+            box-shadow: 5px 5px teal;
+          }
           article {
-            border: 3px solid olive;
-            border-radius: 10px;
+            border: 5px solid orangered;
+            box-shadow: 10px 10px teal;
           }
           img {
-            width: 100%;
-            border-radius: 10px;
+            max-width: 100%;
+
+            justify-content: center;
           }
           .info {
             padding: 0 1rem;
           }
+
+          html {
+            background-color: orange;
+          }
+          .knap {
+            font-size: 20px;
+            font-weight: 200;
+            letter-spacing: 1px;
+            padding: 10px 45px 10px;
+            outline: 0;
+            border: 5px;
+            cursor: pointer;
+            position: relative;
+            background-color: orangered;
+          }
+          h1 {
+            color: teal;
+            text-shadow: 5px 5px orangered;
+            font-size: 3rem;
+            display: inline;
+            font-family: "Kelly Slab", cursive;
+          }
+          p {
+            color: orangered;
+            font-size: 1.5rem;
+            font-family: "Kelly Slab", cursive;
+          }
+          h2 {
+            color: teal;
+            font-size: 2.5rem;
+            font-family: "Kelly Slab", cursive;
+            padding: 5px;
+          }
+          #modal article {
+            max-width: 900px;
+            margin: auto;
+          }
+
+          #modal {
+            position: sticky;
+            display: none;
+            /* position: absolute; */
+            top: 0%;
+            left: 0%;
+            max-width: 100%;
+            max-width: 100%;
+            background-color: orange;
+          }
+          @media (min-width: 600px) {
+            section {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(600px, 1fr * 2));
+              margin: 100px;
+              margin-top: 15px;
+            }
+            h1 {
+              color: orange;
+              font-size: 7em;
+
+              margin: auto;
+            }
+            nav {
+              display: grid;
+              grid-template-columns: repeat(auto-fill, minmax(600px, 1fr * 3));
+            }
+            #modal {
+              position: absolute;
+              top: 0%;
+              left: 0%;
+            }
+            header {
+              padding: 100px;
+              background-image: url("COLOURBOX15597749.jpg");
+              background-position: center;
+              background-size: cover;
+            }
+          }
         </style>
-        <h1>Bistro Babushka</h1>
-        <nav class="filter">
-          <button data-kategori="alle" class="valgte">alle</button>
+        <main>
+          <header>
+            <h1>Bistro Babushka</h1>
+            <nav class="filter">
+              <button data-kategori="alle" class="knap">Alle</button>
 
-          <button data-kategori="forretter">forretter</button>
+              <button data-kategori="forretter" class="knap">Forretter</button>
 
-          <button data-kategori="hovedretter">hovedretter</button>
+              <button data-kategori="hovedretter" class="knap">
+                Hovedretter
+              </button>
 
-          <button data-kategori="desserter">desserter</button>
+              <button data-kategori="desserter" class="knap">Desserter</button>
 
-          <button data-kategori="drikkevarer">drikkevarer</button>
-          <button data-kategori="sideorders">sideorders</button>
-        </nav>
-        <aside id="modal">
-          <h2></h2>
-          <img src="" alt="" />
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-        </aside>
-
-        <section></section>
-        <template>
-          <article>
-            <img src="" alt="" />
+              <button data-kategori="drikkevarer" class="knap">
+                Drikkevarer
+              </button>
+              <button data-kategori="sideorders" class="knap">
+                Sideorders
+              </button>
+            </nav>
+          </header>
+          <aside id="modal">
             <h2></h2>
-            <div class="info">
-              <p class="kategori"></p>
-              <p class="navn"></p>
-              <p class="kortbeskrivelse"></p>
-              <p class="pris"></p>
-            </div>
-          </article>
-        </template>
+            <img src="" alt="" />
+            <p class="kategori"></p>
+            <p class="oprindelsesregion"></p>
+            <p class="langbeskrivelse"></p>
+            <p class="pris"></p>
+          </aside>
+
+          <section></section>
+          <template>
+            <article>
+              <img src="" alt="" />
+              <h2></h2>
+              <div class="info">
+                <p class="kategori"></p>
+                <p class="navn"></p>
+                <p class="kortbeskrivelse"></p>
+                <p class="pris"></p>
+              </div>
+            </article>
+          </template>
+        </main>
 
         <script>
+          /*    const section = document.querySelector("section");
+                   const temp = document.querySelector("template"); */
           const modal = document.querySelector("#modal");
           const nav = document.querySelector("nav");
           const url = "https://babushka-dd8a.restdb.io/rest/menu";
+          const key = "600ec2fb1346a1524ff12de4";
+
           const options = {
             headers: { "x-apikey": "600ec2fb1346a1524ff12de4" },
           };
           let retter;
           let filter = "alle";
+
           async function hentData() {
             const respons = await fetch(url, options);
             retter = await respons.json();
-            vismad();
+            filterMenu();
           }
           const filterknapper = document.querySelectorAll("nav button");
           filterknapper.forEach((knap) =>
             knap.addEventListener("click", filtrerRetter)
           );
+
           hentData();
 
           function filtrerRetter() {
             filter = this.dataset.kategori;
             console.log("filter", filter);
-            vismad();
+            filterMenu();
             header.textContent = this.textContent;
           }
 
-          function vismad() {
+          function filterMenu() {
             const section = document.querySelector("section");
             const temp = document.querySelector("template");
             section.textContent = "";
 
             retter.forEach((mad) => {
+              console.log("kategori", mad.kategori);
               if (filter == mad.kategori || filter == "alle") {
-                console.log("kategori", mad.kategori);
                 const klon = temp.cloneNode(true).content;
                 klon.querySelector(
                   "img"
                 ).src = `medium/${mad.billednavn}-md.jpg`;
-                klon.querySelector(
-                  "h2"
-                ).textContent = `${mad.navn} ${mad.pris}`;
-                klon.querySelector(
-                  ".kategori"
-                ).textContent = `kategori: ${mad.kategori}`;
+
+                klon.querySelector("h2").textContent = `${mad.navn}`;
+
                 klon.querySelector(
                   ".kortbeskrivelse"
-                ).textContent = `${mad.kortbeskrivelse}`;
-                klon.querySelector(".navn").textContent = `navn: ${mad.navn}`;
-                let pris = (klon.querySelector(
-                  ".pris"
-                ).textContent = `pris: ${mad.pris}`);
+                ).textContent = ` ${mad.kortbeskrivelse}`;
+
+                klon.querySelector(".pris").textContent =
+                  `pris: ${mad.pris}` + "KR";
                 klon
                   .querySelector("img")
                   .addEventListener("click", () => visDetaljer(mad));
@@ -134,12 +239,20 @@
           }
           function filtrer() {
             console.log(this.textContent);
-            filter = this.textContent = "";
+            filter = this.textContent;
+            section.textContent = "";
           }
+
           function visDetaljer(mad) {
             console.log(mad);
             modal.querySelector("h2").textContent = mad.navn;
+            modal.querySelector(".oprindelsesregion").textContent =
+              mad.oprindelsesregion;
+            modal.querySelector(".pris").textContent = mad.pris + " KR";
+            modal.querySelector(".langbeskrivelse").textContent =
+              mad.langbeskrivelse;
             modal.querySelector("img").src = `medium/${mad.billednavn}-md.jpg`;
+
             modal.style.display = "block";
           }
           modal.addEventListener("click", () => (modal.style.display = "none"));
